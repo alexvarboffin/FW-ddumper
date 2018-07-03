@@ -1,0 +1,48 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay.v14.Material</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="layout_group_content" parent="@android:style/Widget.TextView">
+        <!--<item name="android:textAppearance">?android:textAppearanceLarge</item>-->
+        <item name="android:textColor">#777777</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="layout_group_header" parent="@android:style/Widget.TextView">
+        <!--<item name="android:textAppearance">?android:textAppearanceSmall</item>-->
+        <!--<item name="android:textColor">@color/colorAccent</item>-->
+        <!--<item name="android:drawableLeft">@drawable/red_circle</item>-->
+        <!--<item name="android:drawablePadding">3.0dip</item>-->
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="ColoredButton" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:tint">@android:color/white</item>
+    </style>
+
+    <style name="Theme.AppCompat.Translucent" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+    </style>
+
+</resources>

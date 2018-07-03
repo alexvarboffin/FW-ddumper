@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">FW-ddumper</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="action_clear">Log cleaned</string>
+
+    <string name="play_dialog_yes_msg">Oh, yes, please!</string>
+
+    <string name="market_url" translatable="false">market://details?id=%1$s</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="action_cp">cp</string>
+    <string name="tab_settings">Settings</string>
+    <string name="title_attention">Внимание!</string>
+    <string name="create_dump_on_sd">Сохранить дамп выбранного раздела на sdcard?\nРаздел %s будет сохранен как %s
+        \nНа sdcard должно быть достаточно свободного места</string>
+    <string name="shell_reboot">Reboot device</string>
+    <string name="shell_reboot_to_recovery">Reboot to recovery</string>
+    <string name="shell_reboot_to_bootloader">Reboot to bootloader</string>
+    <string name="title_sd_card_location">SD Card location</string>
+
+
+    <string name="title_remote_host">Remote netcat host</string>
+    <string name="title_remote_port">Remote netcat port</string>
+    <string name="action_open_fm">Открыть ФМ</string>
+</resources>

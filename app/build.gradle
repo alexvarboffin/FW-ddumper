@@ -1,0 +1,89 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.22.1'
+    }
+}
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
+
+android {
+
+    signingConfigs {
+        config {
+
+            Properties localProps = new Properties()
+            localProps.load(new FileInputStream(file('../local.properties')))
+            Properties keyProps = new Properties()
+
+            keyProps.load(new FileInputStream(file(localProps['keystore.props.file'])))
+
+            storeFile file(keyProps["RELEASE_STORE_FILE"])
+            keyAlias keyProps["RELEASE_KEY_ALIAS"]
+            storePassword keyProps["RELEASE_STORE_PASSWORD"]
+            keyPassword keyProps["RELEASE_KEY_PASSWORD"]
+        }
+    }
+
+    compileSdkVersion 27
+    buildToolsVersion '28.0.0 rc2'
+
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+        applicationId "com.walhalla.fwdumper"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.config
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug{
+
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    flavorDimensions "W"
+
+    productFlavors {
+        full {
+            dimension 'W'
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support:preference-v7:27.1.1'
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support:support-v4:27.1.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation project(':libsuperuser')
+    implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
+        transitive = true
+    }
+}

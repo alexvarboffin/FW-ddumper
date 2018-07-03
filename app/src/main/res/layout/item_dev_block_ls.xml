@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:paddingBottom="5dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="5dp">
+
+    <!--#371F8D-->
+
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#EAEAEA"
+        tools:ignore="UselessParent">
+
+        <View
+            android:id="@+id/dot"
+            android:layout_width="8dp"
+            android:layout_height="77dp"
+            android:layout_centerVertical="true"
+            android:background="@color/colorPrimary"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="0dp"/>
+
+        <TextView
+            tools:text="9999"
+            android:id="@+id/id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/dot"
+            android:layout_toRightOf="@id/dot"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="0dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/id"
+            android:layout_toLeftOf="@id/ll_control"
+            android:layout_toRightOf="@id/id"
+            android:layout_toStartOf="@id/ll_control"
+            android:orientation="vertical"
+            android:paddingEnd="0dp"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="0dp"
+            android:paddingStart="@dimen/activity_horizontal_margin">
+
+
+            <TextView
+                android:id="@+id/tv_block_location"
+                style="@style/layout_group_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#767676"
+                android:textStyle="bold"
+                tools:text="Charless" />
+
+            <TextView
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textStyle="bold"
+                android:id="@+id/tv_block_name"
+                style="@style/layout_group_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="tv_block_name" />
+
+            <TextView
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_control"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_create_dump_to_sd"
+                style="@style/ColoredButton"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@drawable/ic_sd_card_black_24dp"
+                android:tint="@android:color/white" />
+
+
+            <ImageButton
+                android:id="@+id/btn_create_dump_to_adb"
+                style="@style/ColoredButton"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@drawable/ic_get_app_black_24dp"
+                android:tint="@android:color/white" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

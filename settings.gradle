@@ -1,0 +1,3 @@
+include ':app', ':libsuperuser', ':lib'
+include ':wads'
+project(':wads').projectDir = new File('D:\\walhalla\\WalhallaCore\\wads')

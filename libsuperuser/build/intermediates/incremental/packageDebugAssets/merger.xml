@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="D:\walhalla\FWDumper\libsuperuser\assets"/><source path="D:\walhalla\FWDumper\libsuperuser\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\walhalla\FWDumper\libsuperuser\src\debug\assets"/></dataSet></merger>

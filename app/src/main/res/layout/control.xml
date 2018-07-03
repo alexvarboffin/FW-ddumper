@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/btn_create_dump_to_sd"
+        style="@style/ColoredButton"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_sd_card_black_24dp"
+        android:tint="@android:color/white" />
+
+
+    <ImageButton
+        android:id="@+id/btn_create_dump_to_adb"
+        style="@style/ColoredButton"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_get_app_black_24dp"
+        android:tint="@android:color/white" />
+</LinearLayout>
