@@ -463,11 +463,9 @@ public class MainActivity extends AppCompatActivity
 
                         createDumpSdCard(location, output_file_name);
 
-                    }).setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
+                    })
+                    .setNegativeButton(android.R.string.cancel, (dialog12, which) -> {
+//
                     })
                     .create();
             dialog.show();
@@ -758,7 +756,8 @@ public class MainActivity extends AppCompatActivity
 
             // output
             StringBuilder sb = (new StringBuilder()).
-                    append("Root? ").append(suAvailable ? "Yes" : "No").append((char) 10).
+                    append("Root? ").append(suAvailable
+                    ? "Yes" : "No").append((char) 10).
                     append("Version: ").append(suVersion == null ? "N/A" : suVersion).append((char) 10).
                     append("Version (internal): ").append(suVersionInternal == null ? "N/A" :
                     suVersionInternal).append((char) 10).
