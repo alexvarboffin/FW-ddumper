@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
     private boolean b_2;
 
     private SharedPreferences sharedPreferences;
-    private LocalStorage mpm;
+    private LocalStorage mLocalStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        mLocalStorage = LocalStorage.getInstance(this);
+
 
         FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -440,10 +444,8 @@ public class MainActivity extends AppCompatActivity
 //        }
 
 
-        mpm = LocalStorage.getInstance(this);
-
-        String host = mpm.remoteHost();
-        String port = mpm.remotePort();
+        String host = mLocalStorage.remoteHost();
+        String port = mLocalStorage.remotePort();
 
         if (!b_2) {
 
@@ -481,7 +483,6 @@ public class MainActivity extends AppCompatActivity
         String[] commands = new String[]{
 
                 //"dd if=" + location + "| busybox nc " + host + " " + port
-
 
                 /**
                  * Кидает файл на локальный порт,
