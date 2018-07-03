@@ -449,7 +449,6 @@ public class MainActivity extends AppCompatActivity
 
         if (!b_2) {
 
-
             String msg = String.format("Передать дамп выбранного раздела по сети?\nHost: %s\nPort: %s", host, port);
 
 
