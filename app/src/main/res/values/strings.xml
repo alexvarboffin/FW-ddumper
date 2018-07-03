@@ -29,4 +29,5 @@
     <string name="title_remote_host">Remote netcat host</string>
     <string name="title_remote_port">Remote netcat port</string>
     <string name="action_open_fm">Открыть ФМ</string>
+    <string name="message_bb_req">Для работы данного приложения необходимо установить BusyBox\\nУстановить BusyBox?</string>
 </resources>

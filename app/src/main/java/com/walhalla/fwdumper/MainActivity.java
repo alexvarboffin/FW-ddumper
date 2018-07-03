@@ -3,6 +3,7 @@ package com.walhalla.fwdumper;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -393,7 +394,7 @@ public class MainActivity extends AppCompatActivity
      * @param message
      * @param errNc
      */
-    private void showOutput(String message, boolean errNc) {
+    private void showOutput(Context context, String message, boolean errNc) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
                 .setCancelable(false);
@@ -401,8 +402,7 @@ public class MainActivity extends AppCompatActivity
         if (errNc) {
 
             builder.setTitle(R.string.title_attention);
-            builder.setMessage("Для работы данного приложения необходимо установить BusyBox\nУстановить BusyBox?"
-                    + (char) 10 + message);
+            builder.setMessage(context.getString(R.string.message_bb_req) + (char) 10 + message);
 
             builder.setPositiveButton(R.string.play_dialog_yes_msg, (dialog1, which) -> {
 
@@ -495,7 +495,8 @@ public class MainActivity extends AppCompatActivity
                 //"dd if=" + location + " | nc -l -w 10 -p " + port + " &> /dev/null && echo \"Online\" || echo \"Offline\""
 
 
-                "dd if=" + location + " | " + Util.getNetcatLocation() + " -w 20 " + host + " " + port + ""
+                String.format("dd if= %s | %s -w %s %s %s",
+                        location, Util.getNetcatLocation(), "20", host, port)
         };
 
         new ExecuteTask(new MyCallback() {
@@ -508,8 +509,7 @@ public class MainActivity extends AppCompatActivity
 
 
                 StringBuilder sb = new StringBuilder();
-                sb.append("---------------------")
-                        .append((char) 10);
+
                 if (result != null) {
                     for (String content : result) {
                         if (content.contains("nc: not found")) {
@@ -518,7 +518,7 @@ public class MainActivity extends AppCompatActivity
                         sb.append(content).append((char) 10);
                     }
                 }
-                showOutput(sb.toString(), err_nc);
+                showOutput(MainActivity.this, sb.toString(), err_nc);
 
                 if (dialog != null) {
                     dialog.dismiss();
