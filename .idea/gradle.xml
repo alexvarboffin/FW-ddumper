@@ -11,7 +11,8 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/lib" />
             <option value="$PROJECT_DIR$/libsuperuser" />
-            <option value="$PROJECT_DIR$/../WalhallaCore/wads" />
+            <option value="$PROJECT_DIR$/../sdk/UI/wads" />
+            <option value="$PROJECT_DIR$/../sdk/multithreader/threader" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

@@ -5,10 +5,10 @@ import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.VectorDrawable;
 import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.graphics.drawable.VectorDrawableCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.vectordrawable.graphics.drawable.VectorDrawableCompat;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -202,7 +202,7 @@ public class GalleryAdapter
             super(view);
             thumbnail = view.findViewById(R.id.thumbnail);
             container = view.findViewById(R.id.container);
-            name = view.findViewById(R.id.tv_name);
+            name = view.findViewById(R.id.title);
 
             view.setOnClickListener(view1 -> {
 

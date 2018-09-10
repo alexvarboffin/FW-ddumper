@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient
-        android:type="linear"
-        android:angle="45"
-        android:startColor="#5B0A6B"
-        android:endColor="#B10A38" />
-</shape>
+<layer-list>
+    <item xmlns:n1="http://schemas.android.com/apk/res/android"
+        n1:drawable="@android:color/black" />
+    <item>
+        <bitmap xmlns:n2="http://schemas.android.com/apk/res/android"
+            n2:gravity="center"
+            n2:src="@mipmap/ic_launcher_round" />
+    </item>
+</layer-list>

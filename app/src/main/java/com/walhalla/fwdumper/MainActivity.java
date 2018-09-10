@@ -10,15 +10,15 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.NonNull;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import androidx.fragment.app.Fragment;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -62,10 +62,15 @@ public class MainActivity extends AppCompatActivity
     private SharedPreferences sharedPreferences;
     private LocalStorage mLocalStorage;
 
+    private DrawerLayout mDrawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        setTheme(R.style.AppTheme_NoActionBar);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -79,16 +84,16 @@ public class MainActivity extends AppCompatActivity
 
         fab.setVisibility(View.GONE);
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+                this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        drawer.setEnabled(false);
+        mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
 //        // mode switch button
 //        Button button = (Button)findViewById(R.id.switch_button);
@@ -255,8 +260,8 @@ public class MainActivity extends AppCompatActivity
             }
 
             @Override
-            public void onCancelled() {
-                consoleLog("Отменено...");
+            public void onCanceled() {
+                consoleLog(getString(R.string.canceled));
             }
 
             @Override
@@ -449,7 +454,7 @@ public class MainActivity extends AppCompatActivity
 
         if (!b_2) {
 
-            String msg = String.format("Передать дамп выбранного раздела по сети?\nHost: %s\nPort: %s", host, port);
+            String msg = String.format(getString(R.string.send_over_network), host, port);
 
 
             AlertDialog dialog = new AlertDialog.Builder(this)
@@ -495,9 +500,12 @@ public class MainActivity extends AppCompatActivity
                 //"dd if=" + location + " | nc -l -w 10 -p " + port + " &> /dev/null && echo \"Online\" || echo \"Offline\""
 
 
-                String.format("dd if= %s | %s -w %s %s %s",
+                String.format("dd if=%1$s | %2$s -vv -w %3$s %4$s %5$s",
                         location, Util.getNetcatLocation(), "20", host, port)
         };
+
+        consoleLog(String.format("dd if=%1$s | %2$s -w %3$s %4$s %5$s",
+                location, Util.getNetcatLocation(), "20", host, port));
 
         new ExecuteTask(new MyCallback() {
             @SuppressLint("WrongConstant")
@@ -518,6 +526,9 @@ public class MainActivity extends AppCompatActivity
                         sb.append(content).append((char) 10);
                     }
                 }
+
+
+                consoleLog(sb.toString());
                 showOutput(MainActivity.this, sb.toString(), err_nc);
 
                 if (dialog != null) {
@@ -529,7 +540,8 @@ public class MainActivity extends AppCompatActivity
             public void onProgressUpdate(String progress) {
 
             }
-        }).execute(commands);
+        })
+                .execute(commands);
     }
 
 
@@ -591,7 +603,7 @@ public class MainActivity extends AppCompatActivity
         }
 
         @Override
-        public void onCancelled() {
+        public void onCanceled() {
             dialog.dismiss();
         }
     }
@@ -697,7 +709,7 @@ public class MainActivity extends AppCompatActivity
         @Override
         protected void onCancelled() {
             if (mTaskTaskCallback != null) {
-                mTaskTaskCallback.onCancelled();
+                mTaskTaskCallback.onCanceled();
             }
         }
 

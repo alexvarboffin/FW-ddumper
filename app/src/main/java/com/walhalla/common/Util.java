@@ -36,17 +36,17 @@ public class Util {
 
     public static String getNetcatLocation() {
 
-        String[] arr = {
-                "nc",
-                "/system/xbin/nc",
-                "/su/xbin/nc"
-        };
-        for (String s : arr) {
-            boolean isExist = new File(s).exists();
-            if(isExist){
-                return s;
-            }
-        }
+//        String[] arr = {
+//                "nc",
+//                "/system/xbin/nc",
+//                "/su/xbin/nc"
+//        };
+//        for (String s : arr) {
+//            boolean isExist = new File(s).exists();
+//            if(isExist){
+//                return s;
+//            }
+//        }
 
         return "nc";
     }

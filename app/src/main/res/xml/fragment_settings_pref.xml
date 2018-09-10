@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory android:title="Local storage">
+    <PreferenceCategory android:title="@string/title_local_storage">
         <EditTextPreference
             android:key="key_sdcard_location"
             android:title="@string/title_sd_card_location" />
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Remote storage">
+    <PreferenceCategory android:title="@string/title_remote_storage">
         <EditTextPreference
             android:key="key_remote_host"
             android:title="@string/title_remote_host" />

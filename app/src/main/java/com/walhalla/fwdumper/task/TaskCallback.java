@@ -7,7 +7,7 @@ public interface TaskCallback {
 
     void onProgressUpdate(String progress);
 
-    void onCancelled();
+    void onCanceled();
 
     void onPreExecute();
 }

@@ -1,10 +1,9 @@
 <resources>
-    <string name="app_name">FW-ddumper</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
+    <string name="app_name" translatable="false">FW-ddumper</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+    <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="action_settings">Settings</string>
 
     <string name="action_clear">Log cleaned</string>
@@ -12,14 +11,11 @@
     <string name="play_dialog_yes_msg">Oh, yes, please!</string>
 
     <string name="market_url" translatable="false">market://details?id=%1$s</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="action_cp">cp</string>
-    <string name="tab_settings">Settings</string>
-    <string name="title_attention">Внимание!</string>
-    <string name="create_dump_on_sd">Сохранить дамп выбранного раздела на sdcard?\nРаздел %s будет сохранен как %s
-        \nНа sdcard должно быть достаточно свободного места</string>
+    <string name="action_cp" translatable="false">CP</string>
+    <string name="title_attention">Attention!</string>
+    <string name="create_dump_on_sd">Do you want to save the dump of the selected partition on the sdcard?
+        \nSection %s will be saved as %s
+         \nYou should have enough free space on the SD Card</string>
     <string name="shell_reboot">Reboot device</string>
     <string name="shell_reboot_to_recovery">Reboot to recovery</string>
     <string name="shell_reboot_to_bootloader">Reboot to bootloader</string>
@@ -28,6 +24,10 @@
 
     <string name="title_remote_host">Remote netcat host</string>
     <string name="title_remote_port">Remote netcat port</string>
-    <string name="action_open_fm">Открыть ФМ</string>
-    <string name="message_bb_req">Для работы данного приложения необходимо установить BusyBox\\nУстановить BusyBox?</string>
+    <string name="action_open_fm">Open FM</string>
+    <string name="message_bb_req">To use this application, you need to install BusyBox \nInstall BusyBox?</string>
+    <string name="title_local_storage">Local storage</string>
+    <string name="title_remote_storage">Remote storage</string>
+    <string name="canceled">Canceled…</string>
+    <string name="send_over_network">Would you like to transfer the dump of the selected section over the network? \nHost: %s \nPort: %s</string>
 </resources>

@@ -1,6 +1,6 @@
 package com.walhalla.fwdumper;
 
-import android.support.v7.app.AppCompatDelegate;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import com.crashlytics.android.Crashlytics;
 

@@ -1,10 +1,14 @@
+ext {
+    firebaseAdsVerion = '15.0.1'
+}
+
 buildscript {
     repositories {
         maven { url 'https://maven.fabric.io/public' }
     }
 
     dependencies {
-        classpath 'io.fabric.tools:gradle:1.22.1'
+        classpath 'io.fabric.tools:gradle:1.25.4'
     }
 }
 apply plugin: 'com.android.application'
@@ -33,18 +37,44 @@ android {
         }
     }
 
-    compileSdkVersion 27
-    buildToolsVersion '28.0.0 rc2'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.2'
 
-    defaultConfig {
-        vectorDrawables.useSupportLibrary = true
-        applicationId "com.walhalla.fwdumper"
-        minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        signingConfig signingConfigs.config
+
+    def versionPropsFile = file('version.properties')
+
+    if (versionPropsFile.canRead()) {
+        Properties versionProps = new Properties()
+
+        versionProps.load(new FileInputStream(versionPropsFile))
+
+        def code = versionProps['VERSION_CODE'].toInteger() + 1
+
+        versionProps['VERSION_CODE'] = code.toString()
+        versionProps.store(versionPropsFile.newWriter(), null)
+
+        defaultConfig {
+            multiDexEnabled = false
+            resConfigs "ru", "en"
+
+            vectorDrawables {
+                useSupportLibrary = true
+            }
+
+
+            vectorDrawables.useSupportLibrary = true
+            applicationId "com.walhalla.fwdumper"
+            minSdkVersion 15
+            targetSdkVersion 28
+            versionCode code
+            versionName "1.3." + code + ".release"
+            testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+            //signingConfig signingConfigs.config
+        }
+
+
+    } else {
+        throw new GradleException("Could not read version.properties!")
     }
 
     buildTypes {
@@ -74,14 +104,14 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:preference-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
-    implementation 'com.android.support:support-v4:27.1.1'
+    implementation 'androidx.appcompat:appcompat:1.0.0-rc02'
+    implementation 'androidx.preference:preference:1.0.0-rc02'
+    implementation 'com.google.android.material:material:1.0.0-rc02'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-rc02'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     implementation project(':libsuperuser')
     implementation('com.crashlytics.sdk.android:crashlytics:2.9.4@aar') {
         transitive = true

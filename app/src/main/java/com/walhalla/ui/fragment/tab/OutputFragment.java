@@ -2,9 +2,9 @@ package com.walhalla.ui.fragment.tab;
 
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,7 +19,6 @@ import com.walhalla.fwdumper.MainActivity;
 import com.walhalla.fwdumper.R;
 
 import com.walhalla.fwdumper.task.TaskCallback;
-import com.walhalla.ui.fragment.TabHolderFragment;
 
 import java.util.List;
 
@@ -108,7 +107,7 @@ public class OutputFragment extends Fragment implements View.OnClickListener {
                     }
 
                     @Override
-                    public void onCancelled() {
+                    public void onCanceled() {
 
                     }
 

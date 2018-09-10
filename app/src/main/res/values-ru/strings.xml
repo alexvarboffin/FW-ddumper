@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_open_fm">Открыть ФМ</string>
+    <string name="action_settings">Настройки</string>
+    <string name="play_dialog_yes_msg">О, да, пожалуйста!</string>
+    <string name="title_attention">Внимание!</string>
+    <string name="create_dump_on_sd">Сохранить дамп выбранного раздела на sdcard?\nРаздел %s будет сохранен как %s
+        \nНа SD Card должно быть достаточно свободного места</string>
+    <string name="shell_reboot">"Перезагрузить устройство "</string>
+    <string name="shell_reboot_to_recovery">Перезагрузить в режим Recovery</string>
+    <string name="shell_reboot_to_bootloader">Перезагрузить в режим Bootloader</string>
+    <string name="title_sd_card_location">SD Card</string>
+    <string name="title_remote_host">Netcat хост</string>
+    <string name="title_remote_port">Netcat порт</string>
+    <string name="message_bb_req">Для работы данного приложения необходимо установить BusyBox\nУстановить BusyBox?</string>
+    <string name="action_clear">Лог удален</string>
+    <string name="title_local_storage">Локальное хранилище</string>
+    <string name="title_remote_storage">Удаленное хранилище</string>
+    <string name="canceled">Отменено…</string>
+    <string name="send_over_network">Передать дамп выбранного раздела по сети?\nХост: %s\nПорт: %s</string>
+</resources>

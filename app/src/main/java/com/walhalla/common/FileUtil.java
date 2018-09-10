@@ -23,16 +23,16 @@ public class FileUtil {
 
     private static final String FILE_BACKUP_FOLDER = "FWddumper";//android.os.Build.MODEL;
 
-    public static final String LOC_STORAGE_IN = "/storage/emulated/0" + File.separator + FILE_BACKUP_FOLDER + "/input";
-    private static final String LOC_STORAGE_OUT = "/storage/emulated/0" + File.separator + FILE_BACKUP_FOLDER + "/output";
+    public static final String LOC_STORAGE_IN = "/storage/emulated/0" + "/" + FILE_BACKUP_FOLDER + "/input";
+    private static final String LOC_STORAGE_OUT = "/storage/emulated/0" + "/" + FILE_BACKUP_FOLDER + "/output";
 
 
     /**
      * No root
      */
     public final static String EXTERNAL_STORAGE_DIRECTORY = Environment.getExternalStorageDirectory().getAbsolutePath();
-    public static final String EXT_STORAGE_IN = EXTERNAL_STORAGE_DIRECTORY + File.separator + FILE_BACKUP_FOLDER + "/input";
-    public static final String EXT_STORAGE_OUT = EXTERNAL_STORAGE_DIRECTORY + File.separator + FILE_BACKUP_FOLDER + "/output";
+    public static final String EXT_STORAGE_IN = EXTERNAL_STORAGE_DIRECTORY + "/" + FILE_BACKUP_FOLDER + "/input";
+    public static final String EXT_STORAGE_OUT = EXTERNAL_STORAGE_DIRECTORY + "/" + FILE_BACKUP_FOLDER + "/output";
 
 
     /**
@@ -41,13 +41,13 @@ public class FileUtil {
     public final static String EXTERNAL_STORAGE_DIRECTORY_ROOT = "/mnt/media_rw/sdcard0";
     //Environment.getDownloadCacheDirectory().getPath(); - ROOT CACHE
 
-    public static final String EXT_STORAGE_IN_ROOT = EXTERNAL_STORAGE_DIRECTORY_ROOT + File.separator + FILE_BACKUP_FOLDER + "/input";
+    public static final String EXT_STORAGE_IN_ROOT = EXTERNAL_STORAGE_DIRECTORY_ROOT + "/" + FILE_BACKUP_FOLDER + "/input";
 
 
     public static String extOutRoot(Context context) {
         return
                 LocalStorage.getInstance(context).saveSdCardLocation()
-                        + File.separator + FILE_BACKUP_FOLDER + "/output/";
+                        + "/" + FILE_BACKUP_FOLDER + "/output/";
     }
 
     public static void removeFileFromInt2Ext(String fileName) throws Exception {
@@ -97,8 +97,7 @@ public class FileUtil {
     public static String fixName(MyObj block) {
         String fileName = block.getName();
         try {
-            fileName += (new File(block.getLocation()).isFile() ? ".bin"
-                    : ".img");
+            fileName += (new File(block.getLocation()).isFile() ? ".bin" : ".img");
         } catch (Exception ignored) {
         }
 

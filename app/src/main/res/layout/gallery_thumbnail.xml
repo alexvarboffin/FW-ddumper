@@ -32,7 +32,7 @@
     <!--android:src="@drawable/ic_dots" />-->
     <TextView
         android:padding="4dp"
-        android:id="@+id/tv_name"
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

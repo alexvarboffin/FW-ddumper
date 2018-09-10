@@ -1,6 +1,6 @@
 package com.walhalla.domen;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.walhalla.domen.item.Obj;
 

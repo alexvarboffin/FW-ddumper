@@ -1,12 +1,12 @@
 package com.walhalla.ui.fragment;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.ControlPanel;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import com.google.android.material.tabs.TabLayout;
+import androidx.support.v4.app.ControlPanel;
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +74,7 @@ public class TabHolderFragment extends Fragment implements ViewPager.OnPageChang
         mPagerAdapter.addFragment(new OutputFragment(), "Shell");//getString(R.string.tab_active)
         mPagerAdapter.addFragment(new BlockListFragment(), "/dev/");
         mPagerAdapter.addFragment(ControlPanel.newInstance(), getString(R.string.action_cp));
-        mPagerAdapter.addFragment(new SettingsPreferenceFragment(), getString(R.string.tab_settings));
+        mPagerAdapter.addFragment(new SettingsPreferenceFragment(), getString(R.string.action_settings));
         o.setAdapter(mPagerAdapter);
     }
 
