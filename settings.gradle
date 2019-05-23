@@ -1,4 +1,8 @@
 include ':app', ':libsuperuser', ':lib'
+
+include ':ui'
+project(':ui').projectDir = new File('D:\\walhalla\\sdk\\UI\\ui\\')
+
 include ':wads'
 project(':wads').projectDir = new File('D:\\walhalla\\sdk\\UI\\wads\\')
 

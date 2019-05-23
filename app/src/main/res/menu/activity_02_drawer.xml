@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:icon="@drawable/ic_more_vert_black_24dp"
+        android:orderInCategory="300"
+        android:title="@null"
+        app:showAsAction="always">
+        <menu>
+
+            <item
+                android:id="@+id/action_rate_app"
+                android:icon="@drawable/ic_star_black_24dp"
+                android:title="@string/action_rate_app" />
+
+            <item
+                android:id="@+id/action_share_app"
+                android:icon="@drawable/ic_share_black_24dp"
+                android:title="@string/action_share_app" />
+
+            <item
+                android:id="@+id/action_discover_more_app"
+                android:icon="@drawable/ic_apps_black_24dp"
+                android:title="@string/action_discover_more_app" />
+            <item
+                android:id="@+id/menu_about"
+                android:icon="@drawable/ic_menu_info"
+                android:title="@string/action_about" />
+            <item
+                android:id="@+id/action_privacy_policy"
+                android:icon="@drawable/ic_security_black_24dp"
+                android:title="@string/action_privacy_policy" />
+
+
+            <item
+                android:id="@+id/action_feedback"
+                android:icon="@drawable/ic_feedback_black_24dp"
+                android:title="@string/action_contacs_us" />
+
+            <item
+                android:id="@+id/action_testers"
+                android:icon="@drawable/ic_testers"
+                android:title="@string/action_testers" />
+
+            <item
+                android:id="@+id/action_exit"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="@string/action_exit" />
+        </menu>
+    </item>
+
+</menu>

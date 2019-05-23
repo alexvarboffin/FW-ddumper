@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="end"
     android:orientation="horizontal">
 
     <ImageButton
@@ -10,8 +12,8 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_sd_card_black_24dp"
-        android:tint="@android:color/white" />
+        android:tint="@android:color/white"
+        app:srcCompat="@drawable/ic_sd_card_black_24dp" />
 
 
     <ImageButton
@@ -20,6 +22,6 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_get_app_black_24dp"
-        android:tint="@android:color/white" />
+        android:tint="@android:color/white"
+        app:srcCompat="@drawable/ic_get_app_black_24dp" />
 </LinearLayout>

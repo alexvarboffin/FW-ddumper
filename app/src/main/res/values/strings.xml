@@ -1,13 +1,11 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" translatable="false">FW-ddumper</string>
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
     <string name="nav_header_desc" translatable="false">Navigation header</string>
     <string name="action_settings">Settings</string>
-
-    <string name="action_clear">Log cleaned</string>
-
+    <string name="action_clear_log">Clear log</string>
     <string name="play_dialog_yes_msg">Oh, yes, please!</string>
 
     <string name="market_url" translatable="false">market://details?id=%1$s</string>
@@ -30,4 +28,6 @@
     <string name="title_remote_storage">Remote storage</string>
     <string name="canceled">Canceled…</string>
     <string name="send_over_network">Would you like to transfer the dump of the selected section over the network? \nHost: %s \nPort: %s</string>
+    <string name="hint_shell_output" tools:ignore="MissingTranslation"><![CDATA[$terminal>]]></string>
+    <string name="action_testers">Testers</string>
 </resources>

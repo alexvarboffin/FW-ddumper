@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer-array name="tab_icons">
+        <item>@drawable/ic_computer</item>
+        <item>@drawable/ic_format_list_numbered</item>
+        <item>@drawable/ic_bug_report</item>
+        <item>@drawable/ic_settings</item>
+    </integer-array>
+
+</resources>

@@ -13,9 +13,10 @@
     <string name="title_remote_host">Netcat хост</string>
     <string name="title_remote_port">Netcat порт</string>
     <string name="message_bb_req">Для работы данного приложения необходимо установить BusyBox\nУстановить BusyBox?</string>
-    <string name="action_clear">Лог удален</string>
+    <string name="action_clear_log">Очистить лог</string>
     <string name="title_local_storage">Локальное хранилище</string>
     <string name="title_remote_storage">Удаленное хранилище</string>
     <string name="canceled">Отменено…</string>
     <string name="send_over_network">Передать дамп выбранного раздела по сети?\nХост: %s\nПорт: %s</string>
+    <string name="action_testers">Testers</string>
 </resources>

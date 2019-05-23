@@ -7,7 +7,7 @@ import androidx.preference.PreferenceManager;
 
 import com.walhalla.common.FileUtil;
 import com.walhalla.fwdumper.R;
-import com.walhalla.ui.fragment.tab.SettingsPreferenceFragment;
+import com.walhalla.fwdumper.ui.fragment.tab.SettingsPreferenceFragment;
 
 import java.io.File;
 
@@ -16,6 +16,8 @@ public class LocalStorage {
     private static LocalStorage instance = null;
     private SharedPreferences mPreferences;
     private SharedPreferences.Editor editor;
+
+
 
     @SuppressLint("CommitPrefEdits")
     private LocalStorage(Context context) {
@@ -71,6 +73,7 @@ public class LocalStorage {
     }
 
     public String remotePort() {
-        return this.mPreferences.getString(SettingsPreferenceFragment.KEY_REMOTE_PORT, "8888");
+        return this.mPreferences.getString(SettingsPreferenceFragment.KEY_REMOTE_PORT,
+                "8888");
     }
 }

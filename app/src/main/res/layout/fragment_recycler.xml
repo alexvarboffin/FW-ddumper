@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.walhalla.ui.fragment.RecyclerFragment">
+    tools:context="com.walhalla.fwdumper.ui.fragment.RecyclerFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

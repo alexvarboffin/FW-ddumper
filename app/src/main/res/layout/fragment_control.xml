@@ -1,0 +1,32 @@
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context="com.walhalla.fwdumper.ui.fragment.RecyclerFragment">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bottom_container"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/gallery_thumbnail" />
+
+        <FrameLayout
+            android:id="@+id/bottom_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:animateLayoutChanges="true"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:textAlignment="center"
+            tools:layout_height="66dp" />
+
+    </RelativeLayout>
+</layout>

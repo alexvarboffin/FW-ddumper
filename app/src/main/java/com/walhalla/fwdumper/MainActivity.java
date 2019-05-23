@@ -10,15 +10,21 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
+
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,16 +39,20 @@ import com.walhalla.domen.ShellCommand;
 import com.walhalla.domen.item.MyObj;
 import com.walhalla.domen.item.Obj;
 import com.walhalla.fwdumper.task.TaskCallback;
+import com.walhalla.fwdumper.ui.fragment.dialog.TestersDialogFragment;
 import com.walhalla.presentation.view.MainView;
-import com.walhalla.ui.adapter.ComplexAdapter;
-import com.walhalla.ui.fragment.MoreFragment;
-import com.walhalla.ui.fragment.TabHolderFragment;
+import com.walhalla.fwdumper.ui.adapter.ComplexAdapter;
+import com.walhalla.fwdumper.ui.fragment.MoreFragment;
+import com.walhalla.fwdumper.ui.fragment.TabHolderFragment;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.fragment.app.FragmentTransaction;
 import eu.chainfire.libsuperuser.Shell;
+import ru.walhalla.ui.Module_U;
+import ru.walhalla.ui.observer.RateAppModule;
 
 import static com.walhalla.common.Util.BB_PACKAGES;
 
@@ -63,6 +73,7 @@ public class MainActivity extends AppCompatActivity
     private LocalStorage mLocalStorage;
 
     private DrawerLayout mDrawerLayout;
+    private RateAppModule mRateAppModule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,12 +82,19 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        toolbar.setNavigationIcon(R.mipmap.ic_launcher);
+        toolbar.setNavigationOnClickListener(v -> {
+            Module_U.aboutDialog(this);
+        });
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+
+        Module_U.checkUpdate(this);
         mLocalStorage = LocalStorage.getInstance(this);
-
 
         FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(view -> Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -162,7 +180,16 @@ public class MainActivity extends AppCompatActivity
                     .add(R.id.container, tabHolderFragment, TAG_TAB_HOLDER_FRAGMENT).commit();
         }
 
+        mRateAppModule = new RateAppModule(this);
 
+        //WhiteScreen
+        getLifecycle().addObserver(mRateAppModule);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        mRateAppModule.appReloadedHandler();
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -189,40 +216,74 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.activity_02_drawer, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
 
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//
-//            vi
-//
-//
-//            return true;
-//        } else
+            case R.id.menu_about:
+                Module_U.aboutDialog(this);
+                return true;
 
-        if (id == R.id.action_clear) {
-//            List<Fragment> fragments = getSupportFragmentManager().getFragments();
-//            TabHolderFragment f = (TabHolderFragment) getSupportFragmentManager()
-//                    .findFragmentByTag(TAG_TAB_HOLDER_FRAGMENT);
-//            f.clear();
-            return false;
+            case R.id.action_privacy_policy:
+                Module_U.openBrowser(this, Config.url_privacy_policy);
+                return true;
+
+            case R.id.action_rate_app:
+                Module_U.rateUs(this);
+                return true;
+            case R.id.action_share_app:
+                Module_U.shareThisApp(this);
+                return true;
+            case R.id.action_discover_more_app:
+                Module_U.moreApp(this);
+                return true;
+
+
+            case R.id.action_testers:
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                Fragment prev = getSupportFragmentManager().findFragmentByTag("dialog");
+                if (prev != null) {
+                    ft.remove(prev);
+                }
+                ft.addToBackStack(null);
+
+                // Create and show the dialog.
+                DialogFragment newFragment = new TestersDialogFragment();
+                newFragment.show(ft, "dialog");
+                return true;
+
+            case R.id.action_exit:
+                this.finish();
+                System.exit(0);
+                return true;
+
+            case R.id.action_feedback:
+                Module_U.feedback(this);
+                return true;
+
+
+//                extended
+            case R.id.action_clear:
+                return false;
+
+            case R.id.action_share_terminal_data:
+                return false;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+        //action_how_to_use_app
+        //action_support_developer
     }
 
     @Override
     public void executeTheCommand(ShellCommand shellCommand, boolean b) {
-
+        clearConsole();
         //Toast.makeText(this, "@" + shellCommand.getCommand(), Toast.LENGTH_SHORT).show();
 
         new ExecuteTask(new MainActivity.MyCallback() {
@@ -269,6 +330,15 @@ public class MainActivity extends AppCompatActivity
 
             }
         }).execute(new String[]{shellCommand.getCommand()});
+    }
+
+    private void clearConsole() {
+        //List<Fragment> fragments = getSupportFragmentManager().getFragments();
+        TabHolderFragment fragment = (TabHolderFragment) getSupportFragmentManager()
+                .findFragmentByTag(TAG_TAB_HOLDER_FRAGMENT);
+        if (fragment != null) {
+            fragment.clear();
+        }
     }
 
 
@@ -566,9 +636,9 @@ public class MainActivity extends AppCompatActivity
         List<Fragment> fragments = getSupportFragmentManager().getFragments();
         TabHolderFragment f = (TabHolderFragment) getSupportFragmentManager()
                 .findFragmentByTag(TAG_TAB_HOLDER_FRAGMENT);
-        f.println(output);
-
-
+        if (f != null) {
+            f.println(output);
+        }
         Log.i(TAG, "consoleLog: " + output);
     }
 
@@ -577,7 +647,9 @@ public class MainActivity extends AppCompatActivity
         List<Fragment> fragments = getSupportFragmentManager().getFragments();
         TabHolderFragment fragment = (TabHolderFragment) getSupportFragmentManager()
                 .findFragmentByTag(TAG_TAB_HOLDER_FRAGMENT);
-        fragment.priWntList(list);//# build gui
+        if (fragment != null) {
+            fragment.priWntList(list);//# build gui
+        }
     }
 
 
@@ -676,16 +748,17 @@ public class MainActivity extends AppCompatActivity
 //
 //        return wholeoutput.toString();
 
-            List<String> suResult = new ArrayList<>();
+            List<String> suResult;
             StringBuilder sb = new StringBuilder();
+            suAvailable = Shell.SU.available();
 
-            if (Shell.SU.available()) {
+            if (suAvailable) {
                 suResult = Shell.SU.run(params[0]);
+            } else {
+                suResult = new ArrayList<>();
+                suResult.add("This device does not have proper root access");
+                suResult.addAll(Shell.SH.run(params[0]));//No root
             }
-
-//        else {
-//            return Shell.SH.run(params[0]);
-//        }
 
 
             return suResult;
