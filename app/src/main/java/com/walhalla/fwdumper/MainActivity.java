@@ -91,6 +91,7 @@ public class MainActivity extends AppCompatActivity
             Module_U.aboutDialog(this);
         });
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setSubtitle(ru.walhalla.ui.Util.getAppVersion(this));
 
 
         Module_U.checkUpdate(this);

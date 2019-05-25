@@ -1,8 +1,10 @@
 package com.walhalla.fwdumper.ui.adapter;
 
 import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -190,7 +192,7 @@ public class ComplexAdapter
             }
             holder.location.setText(operation.getLocation());
             holder.info.setText(operation.getInfo());
-            holder.id.setText("" + position);
+            holder.id.setText("" + (position + 1));
         }
     }
 

@@ -231,6 +231,59 @@ public class Data {
             }
         });
 
+
+
+
+        //New test data
+//        shell.add(new ShellCommand("cat /proc/emmc") {
+//            @Override
+//            public ArrayList<Obj> parseResult(List<String> result) {
+//
+////                result = new ArrayList<>();
+////                result.add("dev: size erasesize name");
+////                result.add("mtd0: 00040000 00020000 \"misc\"");
+////                result.add("mtd1: 00500000 00020000 \"recovery\"");
+////                result.add("mtd2: 00280000 00020000 \"boot\"");
+////                result.add("mtd3: 04380000 00020000 \"system\"");
+////                result.add("mtd4: 04380000 00020000 \"cache\"");
+////                result.add("mtd5: 04ac0000 00020000 \"userdata\"");
+//
+//                Pattern pattern = Pattern.compile("(^\\w+):\\s(\\w+)\\s(\\w+)\\s\"(\\w+)\"", Pattern.DOTALL);
+//                ArrayList<Obj> objects = new ArrayList<>();
+//
+//                String location, name;
+//                String info;
+//
+//                for (String content : result) {
+//                    Matcher matcher = pattern.matcher(content.trim());
+//
+//
+//                    while (matcher.find()) {
+//
+////                System.out.println("1|" + matcher.group(1));
+////                System.out.println("2|" + matcher.group(2));
+////                System.out.println("3|" + matcher.group(3));
+////                System.out.println("4|" + matcher.group(4));
+//
+//                        info = matcher.group(1) + "\t" + matcher.group(2) + "\t" + matcher.group(3);
+//
+//                        name = matcher.group(4);
+//                        location = "/dev/mtd/" + matcher.group(1);
+////                                String uu =
+////                                    "Found at: " + matcher.start()
+////                                    + " - " + matcher.end() +
+////                                        "@@" + matcher.group(1) + "@@" + matcher.group(2);
+//
+//
+//                        objects.add(new LsObj(location/*matcher.group(1)*/, name, info,
+//                                //new File(location).isDirectory())
+//                                true
+//                        ));
+//                    }
+//                }
+//                return objects;
+//            }
+//        });
         shell.add(new BaseCommand("ip route show"));
         shell.add(new BaseCommand("cat /data/misc/wifi/wpa_supplicant.conf"));
 
